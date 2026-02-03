@@ -24,7 +24,7 @@ A personal portfolio website built with Astro.js and Tailwind CSS, featuring an 
 ## Project Structure
 
 ```
-randyman-astro-project/
+perosnal-portfolio/
 ├── src/
 │   ├── components/     # Reusable components
 │   ├── layouts/        # Page layouts
