@@ -24,7 +24,7 @@ A personal portfolio website built with Astro.js and Tailwind CSS, featuring an 
 ## Project Structure
 
 ```
-perosnal-portfolio/
+personal-portfolio/
 ├── src/
 │   ├── components/     # Reusable components
 │   ├── layouts/        # Page layouts
