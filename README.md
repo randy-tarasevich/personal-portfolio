@@ -1,4 +1,4 @@
-# Randyman Portfolio
+# Randy Tarasevich's Personal Portfolio
 
 A personal portfolio website built with Astro.js and Tailwind CSS, featuring an astro.build-inspired dark theme with subtle purple/blue glows.
 
