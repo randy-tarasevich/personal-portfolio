@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About - Randyman">
+  
+  <section class="relative py-24 px-6 overflow-hidden">
+    <!-- Subtle background glows -->
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] glow-purple"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] glow-blue"></div>
+    
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-6">About Me</h1>
+      
+      <!-- The Hook -->
+      <div class="mb-16">
+        <p class="text-2xl md:text-3xl text-text-primary font-medium leading-snug mb-6">
+          I'm not a developer who learned some business—I'm a business person who learned to code.
+        </p>
+        <p class="text-xl text-text-secondary leading-relaxed">
+          That distinction matters. When I build your website, I'm not just thinking about the code. I'm thinking about your customers, your margins, your time.
+        </p>
+      </div>
+      
+      <!-- The Thread / Story -->
+      <div class="mb-20">
+        <h2 class="text-sm font-medium text-accent-purple uppercase tracking-wide mb-8">The Path Here</h2>
+        <div class="space-y-6 text-text-secondary leading-relaxed">
+          <p>
+            I've always been drawn to where business, technology, and education intersect. My path hasn't been linear, but it's never been random—every chapter put me at that same crossroads from a different angle.
+          </p>
+          <p>
+            I've founded a business and learned firsthand that small business owners wear every hat—and that good systems aren't a luxury, they're survival. I've stood in front of a classroom and taught business courses, which taught me just as much: how to break down complex ideas, meet people where they are, and remember why any of this matters in the first place. I've worked in operations and developed an eye for process—what's efficient, what's fragile, what breaks when things get busy.
+          </p>
+          <p>
+            Now I write code. But I'm still doing the same thing I've always done: helping people run better businesses.
+          </p>
+        </div>
+      </div>
+
+      <!-- What I Bring -->
+      <div class="mb-20">
+        <h2 class="text-sm font-medium text-accent-blue uppercase tracking-wide mb-8">What I Bring</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="p-5 rounded-xl border border-border-subtle bg-bg-secondary/30">
+            <div class="w-10 h-10 rounded-lg bg-accent-purple/10 flex items-center justify-center mb-4">
+              <span class="text-accent-purple text-lg">📊</span>
+            </div>
+            <h3 class="text-text-primary font-medium mb-2">Business</h3>
+            <p class="text-text-secondary text-sm">I've run businesses, not just built websites for them. I understand margins, customers, and the reality of limited time and budget.</p>
+          </div>
+          <div class="p-5 rounded-xl border border-border-subtle bg-bg-secondary/30">
+            <div class="w-10 h-10 rounded-lg bg-accent-blue/10 flex items-center justify-center mb-4">
+              <span class="text-accent-blue text-lg">💻</span>
+            </div>
+            <h3 class="text-text-primary font-medium mb-2">Technology</h3>
+            <p class="text-text-secondary text-sm">Modern tools, clean code, no bloat. I build fast, maintainable systems that actually solve problems—not create new ones.</p>
+          </div>
+          <div class="p-5 rounded-xl border border-border-subtle bg-bg-secondary/30">
+            <div class="w-10 h-10 rounded-lg bg-accent-pink/10 flex items-center justify-center mb-4">
+              <span class="text-accent-pink text-lg">🎓</span>
+            </div>
+            <h3 class="text-text-primary font-medium mb-2">Education</h3>
+            <p class="text-text-secondary text-sm">I don't just build and disappear. I explain what I'm doing and why, so you understand your own website and can make informed decisions.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tech Stack -->
+      <div>
+        <h2 class="text-sm font-medium text-accent-pink uppercase tracking-wide mb-8">Tech Stack</h2>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-purple/50 hover:text-accent-purple transition-colors cursor-default">Astro.js</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-blue/50 hover:text-accent-blue transition-colors cursor-default">Tailwind CSS</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-pink/50 hover:text-accent-pink transition-colors cursor-default">JavaScript</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-purple/50 hover:text-accent-purple transition-colors cursor-default">Python</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-blue/50 hover:text-accent-blue transition-colors cursor-default">Claude API</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-pink/50 hover:text-accent-pink transition-colors cursor-default">SQLite</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-purple/50 hover:text-accent-purple transition-colors cursor-default">DigitalOcean</span>
+          <span class="px-4 py-2 rounded-lg border border-border-subtle text-text-secondary text-sm hover:border-accent-blue/50 hover:text-accent-blue transition-colors cursor-default">AWS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
