@@ -6,7 +6,7 @@ A personal portfolio website built with Astro.js and Tailwind CSS, featuring an 
 
 1. **Open in Cursor:**
    - Open Cursor
-   - File → Open Folder → Select this `randyman-astro-project` folder
+   - File → Open Folder → Select this `personal-portfolio` folder
 
 2. **Install dependencies:**
    ```bash
