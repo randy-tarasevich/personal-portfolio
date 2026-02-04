@@ -1,0 +1,14 @@
+---
+description: This project uses JavaScript only; no TypeScript
+alwaysApply: true
+---
+
+# JavaScript Only — No TypeScript
+
+This project is **JavaScript only**. Do not introduce or use TypeScript.
+
+- **Do not** add or create `.ts` or `.tsx` files.
+- **Do** use `.js` for any script/module code (e.g. in `src/lib/`).
+- Keep type annotations and TypeScript-only syntax out of the codebase.
+
+If you need shared logic (e.g. utilities, helpers), implement it in plain JavaScript (`.js`) and import it where needed.

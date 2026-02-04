@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection, type CollectionEntry, render } from 'astro:content';
-import { isBlogPostVisible } from '../../lib/blog';
+import { isBlogPostVisible } from '../../lib/blog.js';
 
 type BlogPostProps = { post: CollectionEntry<'blog'> };
 
