@@ -56,7 +56,7 @@
 
   /* Blog post subheadings */
   .prose h2 {
-    @apply text-2xl font-bold text-text-primary mt-10 mb-4;
+    @apply text-2xl md:text-3xl font-bold text-text-primary mt-10 mb-4;
   }
 
   /* Blog post paragraph indent (first line ~5 spaces) */
