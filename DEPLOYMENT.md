@@ -4,20 +4,28 @@
 
 The contact form uses [Web3Forms](https://web3forms.com). The access key is loaded from an environment variable so it is not committed to the repo.
 
+### If you build on your own computer (most common for S3/CloudFront)
+
+You **do not need to set any environment variable in AWS or anywhere else.**
+
+1. You have a `.env` file in this project (already created) with:
+   ```
+   PUBLIC_WEB3FORMS_ACCESS_KEY=43a560b2-da27-4999-be3d-fb3a4b2a44f7
+   ```
+2. When you run `npm run build` on your machine, Astro reads `.env` and puts the key into the built HTML.
+3. You upload the `dist/` folder to S3 (e.g. `aws s3 sync dist/ s3://YOUR-BUCKET --delete`). That HTML already contains the key.
+4. The contact form on the live site will work. No extra configuration needed.
+
+**Summary:** As long as you run `npm run build` on the same computer where the `.env` file lives, the production site will have a working contact form. You never set the key in AWS—it’s only needed when building.
+
 ### Local development
 
-A `.env` file has been created in the project root with:
-
-```
-PUBLIC_WEB3FORMS_ACCESS_KEY=43a560b2-da27-4999-be3d-fb3a4b2a44f7
-```
-
 - **Do not commit `.env`** (it is in `.gitignore`).
-- Run `npm run dev` or `npm run build` as usual; the key is read automatically.
+- Run `npm run dev` or `npm run build` as usual; the key is read automatically from `.env`.
 
-### Production: set the env var where you build
+### Production: set the env var only if you build in the cloud
 
-The key must be available **at build time** (Astro inlines it into the built HTML). Set it in your deployment platform as follows.
+The key must be available **at build time**. If you build **on your computer**, `.env` is enough (see above). Only if you build in CI (e.g. GitHub Actions) or on another server do you need to set the variable there:
 
 #### Netlify
 
@@ -59,16 +67,11 @@ If you run `npm run build` on your machine and push the `dist/` folder (or use a
 
 #### AWS S3 + CloudFront
 
-The key must be available when you run `npm run build`. Two options:
+**Option A: Build on your computer (recommended)**  
+Your `.env` already has the key. Run `npm run build`, then upload `dist/` (see below). **No env setup in AWS—the key is in the HTML when you build.**
 
-**Option A: Build locally (simplest)**  
-Your `.env` already has the key. Run `npm run build`, then upload `dist/` (see below). No extra config.
-
-**Option B: Build in CI (e.g. GitHub Actions)**
-
-1. In the repo: **Settings** → **Secrets and variables** → **Actions** → add secret `PUBLIC_WEB3FORMS_ACCESS_KEY`.
-2. In your workflow, before `npm run build`, set the env var from the secret (same as the GitHub Pages example above).
-3. Then run the S3 sync and CloudFront invalidation steps from the workflow.
+**Option B: Build in CI (e.g. GitHub Actions)**  
+Only if you want the build to run in the cloud: add the secret `PUBLIC_WEB3FORMS_ACCESS_KEY` in the repo’s **Settings → Secrets and variables → Actions**, and in the workflow set `env: PUBLIC_WEB3FORMS_ACCESS_KEY: ${{ secrets.PUBLIC_WEB3FORMS_ACCESS_KEY }}` for the step that runs `npm run build`.
 
 **Deploying the built site to S3 + CloudFront**
 
@@ -76,10 +79,9 @@ Your `.env` already has the key. Run `npm run build`, then upload `dist/` (see b
 
    - Keep **Block public access** **on**; use **Origin access control (OAC)** so only CloudFront can read from the bucket (no public bucket needed).
 
-2. **Build with the key set** (if not using `.env`):
+2. **Build** (on your machine, `.env` is used automatically):
 
    ```bash
-   export PUBLIC_WEB3FORMS_ACCESS_KEY=43a560b2-da27-4999-be3d-fb3a4b2a44f7
    npm run build
    ```
 
