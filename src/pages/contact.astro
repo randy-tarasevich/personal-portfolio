@@ -2,7 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact - Randyman">
+<BaseLayout
+  title="Contact - Randy Tarasevich"
+  description="Get in touch for custom software, web projects, or consulting. Based in Old Lyme, Connecticut—serving the shoreline and beyond."
+>
   
   <section class="relative py-24 px-6 overflow-hidden">
     <div class="absolute top-10 right-10 w-[500px] h-[500px] glow-purple"></div>
@@ -19,7 +22,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Contact Form -->
         <div>
           <form id="contact-form" class="space-y-6" method="POST">
-            <input type="hidden" name="access_key" value="43a560b2-da27-4999-be3d-fb3a4b2a44f7">
+            <input type="hidden" name="access_key" value={import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY}>
             <input type="checkbox" name="botcheck" class="hidden" aria-hidden="true" tabindex="-1" autocomplete="off">
             <div>
               <label class="block text-sm text-text-secondary mb-2">Name</label>
@@ -60,13 +63,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           
           <div>
             <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-4">Business</h3>
-            <p class="text-text-primary">Shoreline Web Solutions</p>
+            <p class="text-text-primary">
+              <a href="https://shorelinewebsolutions.com/" target="_blank" rel="noopener noreferrer" class="hover:text-accent-blue transition-colors underline underline-offset-2 decoration-border-subtle hover:decoration-accent-blue">Shoreline Web Solutions</a>
+            </p>
             <p class="text-text-secondary text-sm">Custom software development</p>
           </div>
           
           <div>
             <h3 class="text-sm font-medium text-text-secondary uppercase tracking-wide mb-4">Community</h3>
-            <p class="text-text-primary">Shoreline United Networking</p>
+            <p class="text-text-primary">
+              <a href="https://www.shorelineunitednetworking.com/" target="_blank" rel="noopener noreferrer" class="hover:text-accent-pink transition-colors underline underline-offset-2 decoration-border-subtle hover:decoration-accent-pink">Shoreline United Networking</a>
+            </p>
             <p class="text-text-secondary text-sm">Digital Marketing Coordinator</p>
           </div>
           

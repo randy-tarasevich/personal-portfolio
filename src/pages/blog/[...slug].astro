@@ -1,24 +1,28 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getCollection, type CollectionEntry, render } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import { isBlogPostVisible } from '../../lib/blog.js';
-
-type BlogPostProps = { post: CollectionEntry<'blog'> };
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   const visible = posts.filter((post) => isBlogPostVisible(post.id));
   return visible.map((post) => ({
     params: { slug: post.id.replace(/\.md$/, '') },
-    props: { post } satisfies BlogPostProps,
+    props: { post },
   }));
 }
 
-const { post } = Astro.props as BlogPostProps;
+const { post } = Astro.props;
 const { Content } = await render(post);
+const slug = post.id.replace(/\.md$/, '');
+const canonical = `https://randy-tarasevich.com/blog/${slug}`;
 ---
 
-<BaseLayout title={`${post.data.title} - Randyman`}>
+<BaseLayout
+  title={`${post.data.title} - Randy Tarasevich`}
+  description={post.data.description}
+  canonical={canonical}
+>
   <article class="relative py-24 px-6">
     <div class="max-w-4xl mx-auto">
       <header class="mb-8">
