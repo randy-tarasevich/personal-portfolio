@@ -1,6 +1,12 @@
-# Astro.js - My Go-to Framework for Small Business Websites
+---
+title: 'Astro.js - My Go-to Framework for Small Business Websites'
+description: 'Why I use Astro.js for small business websites: speed, SEO, and the right amount of flexibility without bloat.'
+pubDate: 2026-02-04
+category: Web Development
+readingTime: 5
+---
 
-When a local business owner comes to me looking for a new website, one of the first decisions I make behind the scenes is which technology to build it with. Over the past few years, after working with WordPress, React-based frameworks, and a handful of other tools, I've landed firmly on Astro.js — and I don't see that changing anytime soon.
+When a local business owner comes to me looking for a new website, one of the first decisions I make behind the scenes is which technology to build it with. Over the past few years, I have worked with WordPress, Squarespace, React-based frameworks, and a handful of other tools. However, I've landed firmly on Astro.js and I don't see that changing anytime soon.
 
 Here's why, and why it should matter to you even if you never write a line of code.
 

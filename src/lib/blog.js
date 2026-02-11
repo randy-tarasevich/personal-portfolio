@@ -5,7 +5,7 @@
 const BLOG_SHOW_ALL_DATE = new Date('2027-01-01')
 
 /** Slugs to show until BLOG_SHOW_ALL_DATE. All others are hidden. */
-const BLOG_SLUGS_UNTIL_THEN = ['crossfit-to-code']
+const BLOG_SLUGS_UNTIL_THEN = ['crossfit-to-code', 'astro-js-go-to-framework']
 
 export function isBlogPostVisible(id) {
   if (new Date() >= BLOG_SHOW_ALL_DATE) return true
