@@ -118,6 +118,36 @@ aws s3 sync dist/ s3://YOUR-BUCKET-NAME --delete
 aws cloudfront create-invalidation --distribution-id YOUR-DISTRIBUTION-ID --paths "/*"
 ```
 
+**If you see "Access Denied" in the browser**
+
+- **Every page (including the homepage):** The bucket is not allowing CloudFront to read. In **S3 → bucket → Permissions**: (1) Keep **Block public access** on. (2) Under **Bucket policy**, ensure the policy allows the CloudFront distribution (via **Origin Access Control**): the policy should have a `Principal` that references your OAC (e.g. the OAC ID or the distribution’s service principal) and `GetObject` on the bucket. If you use OAC, run **Copy policy** from the CloudFront origin (S3 origin → Edit → Origin access → Copy policy) and paste it into the bucket policy, then save.
+- **Only some URLs (e.g. a blog post like `/blog/astro-js-go-to-framework`):** S3 has no “directory index”: the file is `blog/astro-js-go-to-framework/index.html`, but the request is for `blog/astro-js-go-to-framework`, so S3 returns 403. Fix: add a **CloudFront Function** that rewrites the request so paths without a file extension get `/index.html` appended.
+
+  1. In **CloudFront → your distribution → Behaviors**, confirm the default behavior uses the S3 origin.
+  2. **CloudFront → Functions** → Create function, e.g. name `rewrite-spa-index`, runtime **cloudfront-js-1.0**.
+  3. Paste this code (rewrites paths that don’t look like files to `path/index.html`):
+
+  ```javascript
+  function handler(event) {
+    var request = event.request
+    var uri = request.uri
+    if (!uri.includes('.')) {
+      if (uri.endsWith('/')) {
+        request.uri = uri + 'index.html'
+      } else {
+        request.uri = uri + '/index.html'
+      }
+    }
+    return request
+  }
+  ```
+
+  4. Save, then **Publish** the function.
+  5. **Behaviors** → Edit default behavior → **Viewer request** → Function type **CloudFront Functions**, select `rewrite-spa-index` → Save.
+  6. Invalidate again: `aws cloudfront create-invalidation --distribution-id YOUR-DISTRIBUTION-ID --paths "/*"`.
+
+After that, URLs like `/blog/astro-js-go-to-framework` will be served from `blog/astro-js-go-to-framework/index.html`.
+
 #### Other hosts (Cloudflare Pages, DigitalOcean, etc.)
 
 Add an environment variable named **`PUBLIC_WEB3FORMS_ACCESS_KEY`** with value `43a560b2-da27-4999-be3d-fb3a4b2a44f7` in the build settings, then run `npm run build` in that environment.
